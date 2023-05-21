@@ -1,6 +1,6 @@
 A simple fm synthesizer built in Rust
 
-Make sure you have rust and cargo installed and run:
+Make sure you have rust and cargo installed and from the command line run:
 
 '''
 $ cargo run
