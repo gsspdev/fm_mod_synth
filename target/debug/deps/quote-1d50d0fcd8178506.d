@@ -1,0 +1,13 @@
+/Users/gssp/development/Rust/fm_mod_synth/target/debug/deps/quote-1d50d0fcd8178506.rmeta: /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/lib.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/ext.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/format.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/ident_fragment.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/to_tokens.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/runtime.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/spanned.rs
+
+/Users/gssp/development/Rust/fm_mod_synth/target/debug/deps/libquote-1d50d0fcd8178506.rlib: /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/lib.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/ext.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/format.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/ident_fragment.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/to_tokens.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/runtime.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/spanned.rs
+
+/Users/gssp/development/Rust/fm_mod_synth/target/debug/deps/quote-1d50d0fcd8178506.d: /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/lib.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/ext.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/format.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/ident_fragment.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/to_tokens.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/runtime.rs /Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/spanned.rs
+
+/Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/lib.rs:
+/Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/ext.rs:
+/Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/format.rs:
+/Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/ident_fragment.rs:
+/Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/to_tokens.rs:
+/Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/runtime.rs:
+/Users/gssp/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.27/src/spanned.rs:
