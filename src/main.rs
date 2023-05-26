@@ -1,10 +1,12 @@
 mod lib;
 
-use crate::lib::Oscillator;
 use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
 use std::time::{Duration, Instant};
+
+use crate::lib::Oscillator;
 use crate::lib::read_param;
 use crate::lib::parse_arg;
+
 pub fn run() {
     let (osc1_amp, osc1_freq, osc2_amp, osc2_freq) = if std::env::args().len() == 5 {
         (
@@ -77,19 +79,4 @@ pub fn run() {
 }
 fn main() {
     run();
-    struct ExampleOsc {
-        amp: f32,
-        freq: f32,
-        }
-    impl ExampleOsc {
-        fn new(amp: f32, freq: f32) -> ExampleOsc {
-            ExampleOsc {
-                amp,
-                freq,
-            }
-    }
-}
-    let osctest1 = ExampleOsc::new(1.0, 1.0);
-    println!("{0}", osctest1.amp)
-
 }
