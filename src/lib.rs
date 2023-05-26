@@ -6,6 +6,8 @@ use std::time::{Duration, Instant};
 use std::io::prelude::*;
 // use std::fs::File;
 
+// TODO : Seperate out the library into a crate format
+
 // An oscillator struct that can be used to generate a sine wave.
 #[derive(Clone)]
 pub struct Oscillator {
