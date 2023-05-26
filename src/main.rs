@@ -1,9 +1,11 @@
 mod lib;
+mod osc;
 
 use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
 use std::time::{Duration, Instant};
 
-use crate::lib::Oscillator;
+// use crate::lib::Oscillator;
+use crate::osc::Oscillator;
 use crate::lib::read_param;
 use crate::lib::parse_arg;
 
