@@ -3,31 +3,52 @@ mod osc;
 
 use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
 use std::time::{Duration, Instant};
+use std::clone;
 
 // use crate::lib::Oscillator;
 use crate::osc::Oscillator;
+use crate::osc::OscillatorShape;
 use crate::lib::read_param;
 use crate::lib::parse_arg;
 
 pub fn run() {
-    let (osc1_amp, osc1_freq, osc2_amp, osc2_freq) = if std::env::args().len() == 5 {
+    let (osc1_amp, osc1_freq, osc1_shape, osc2_amp, osc2_freq   , osc2_shape) = if std::env::args().len() == 7 {
         (
             parse_arg::<f32>(&std::env::args().nth(1).unwrap(), "oscillator 1 amplitude"),
             parse_arg::<f32>(&std::env::args().nth(2).unwrap(), "oscillator 1 frequency"),
-            parse_arg::<f32>(&std::env::args().nth(3).unwrap(), "oscillator 2 amplitude"),
-            parse_arg::<f32>(&std::env::args().nth(4).unwrap(), "oscillator 2 frequency"),
+            parse_arg::<f32>(&std::env::args().nth(3).unwrap(), "oscillator 1 shape"), 
+            parse_arg::<f32>(&std::env::args().nth(4).unwrap(), "oscillator 2 amplitude"),
+            parse_arg::<f32>(&std::env::args().nth(5).unwrap(), "oscillator 2 frequency"),
+            parse_arg::<f32>(&std::env::args().nth(6).unwrap(), "oscillator 2 shape"),
         )
     } else {
         (
             read_param::<f32>("Enter amplitude for oscillator 1: "),
             read_param::<f32>("Enter frequency for oscillator 1: "),
+            read_param::<f32>("Enter shape for oscillator 1: "),
             read_param::<f32>("Enter amplitude for oscillator 2: "),
             read_param::<f32>("Enter frequency for oscillator 2: "),
+            read_param::<f32>("Enter shape for oscillator 2: "),
         )
     };
+    fn parse_shape(shape: &f32) -> OscillatorShape {
+        match shape {
+            1.0 => OscillatorShape::Sinewave,
+            2.0 => OscillatorShape::Squarewave,
+            3.0 => OscillatorShape::Sawwave,
+            4.0 => OscillatorShape::Trianglewave,
+            _ => {
+                eprintln!("Invalid shape: {}", shape);
+                std::process::exit(1);
+            }
+        }
+    }
 
-    let osc1 = Oscillator::new(osc1_amp, osc1_freq);
-    let osc2 = Oscillator::with_input(osc2_amp, osc2_freq, osc1);
+    let osc1_waveshape = parse_shape(&osc1_shape);
+    let osc2_waveshape = parse_shape(&osc2_shape);
+
+    let osc1 = Oscillator::new(osc1_amp, osc1_freq, osc1_waveshape);
+    let osc2 = Oscillator::with_input(osc2_amp, osc2_freq, osc2_waveshape, osc1);
 
     let update_interval = Duration::from_millis(1);
     let mut time = 0.0;
@@ -41,7 +62,7 @@ pub fn run() {
         .expect("Failed to get default output config")
         .config();
 
-    let osc2_clone = osc2.clone();
+    let osc2_clone = osc2.clone_osc();
     let sample_rate = config.sample_rate.0 as f32;
     let mut samples_played = 0f32;
 
