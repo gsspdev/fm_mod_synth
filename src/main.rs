@@ -12,31 +12,32 @@ use crate::lib::read_param;
 use crate::lib::parse_arg;
 
 pub fn run() {
-    let (osc1_amp, osc1_freq, osc1_shape, osc2_amp, osc2_freq   , osc2_shape) = if std::env::args().len() == 7 {
+    let (osc1_amp, osc1_freq, osc1_shape, osc2_amp, osc2_freq, osc2_shape) = if std::env::args().len() == 7 {
         (
             parse_arg::<f32>(&std::env::args().nth(1).unwrap(), "oscillator 1 amplitude"),
             parse_arg::<f32>(&std::env::args().nth(2).unwrap(), "oscillator 1 frequency"),
-            parse_arg::<f32>(&std::env::args().nth(3).unwrap(), "oscillator 1 shape"), 
+            parse_arg::<String>(&std::env::args().nth(3).unwrap(), "oscillator 1 shape"), 
             parse_arg::<f32>(&std::env::args().nth(4).unwrap(), "oscillator 2 amplitude"),
             parse_arg::<f32>(&std::env::args().nth(5).unwrap(), "oscillator 2 frequency"),
-            parse_arg::<f32>(&std::env::args().nth(6).unwrap(), "oscillator 2 shape"),
+            parse_arg::<String>(&std::env::args().nth(6).unwrap(), "oscillator 2 shape"),
         )
     } else {
         (
             read_param::<f32>("Enter amplitude for oscillator 1: "),
             read_param::<f32>("Enter frequency for oscillator 1: "),
-            read_param::<f32>("Enter shape for oscillator 1: "),
+            read_param::<String>("Enter shape for oscillator 1 (sin, squ, saw, tri): "),
             read_param::<f32>("Enter amplitude for oscillator 2: "),
             read_param::<f32>("Enter frequency for oscillator 2: "),
-            read_param::<f32>("Enter shape for oscillator 2: "),
+            read_param::<String>("Enter shape for oscillator 2 (sin, squ, saw, tri): "),
         )
     };
-    fn parse_shape(shape: &f32) -> OscillatorShape {
+
+    fn parse_shape(shape: &str) -> OscillatorShape {
         match shape {
-            1.0 => OscillatorShape::Sinewave,
-            2.0 => OscillatorShape::Squarewave,
-            3.0 => OscillatorShape::Sawwave,
-            4.0 => OscillatorShape::Trianglewave,
+            "sin" => OscillatorShape::Sinewave,
+            "squ" => OscillatorShape::Squarewave,
+            "saw" => OscillatorShape::Sawwave,
+            "tri" => OscillatorShape::Trianglewave,
             _ => {
                 eprintln!("Invalid shape: {}", shape);
                 std::process::exit(1);
@@ -52,6 +53,8 @@ pub fn run() {
 
     let update_interval = Duration::from_millis(1);
     let mut time = 0.0;
+
+    // ... rest of the code is same
 
     let host = cpal::default_host();
     let device = host
@@ -100,6 +103,7 @@ pub fn run() {
         time += update_interval.as_secs_f32();
     }
 }
+
 fn main() {
     run();
 }
