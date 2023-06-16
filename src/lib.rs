@@ -1,5 +1,5 @@
 use std::str::FromStr;
-use std::time::{Duration, Instant};
+
 use std::io::prelude::*;
 
 pub fn parse_arg<T: FromStr>(arg: &str, description: &str) -> T {
