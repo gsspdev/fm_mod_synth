@@ -1,0 +1,13 @@
+// test.glicol
+// ~t1: speed 4.0 >> seq 60 >> bd 0.2 >> mul 0.6
+    
+~t2: seq 45_33_ _33 35__33 _33
+>> sawsynth 0.01 0.2
+>> mul 0.5 >> lpf 1000.0 1.0
+
+~t3: seq 21_33_ _24 29_25 25_ 23_25
+>> squsynth 0.01 0.084
+>>mul 0.5 >> lpf 840.0 2.4
+
+
+out: mix ~t.. >> plate 0.1
