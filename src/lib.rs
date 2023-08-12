@@ -1,7 +1,4 @@
-// pub mod lib;
-
 mod prompt_for_params;
-
 use std::str::FromStr;
 use std::io::prelude::*;
 

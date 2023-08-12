@@ -10,11 +10,12 @@ use crate::osc::Oscillator;
 use crate::osc::OscillatorShape;
 use crate::lib::read_param;
 use crate::lib::parse_arg;
+use crate::prompt_for_params::prompt_for_params;
 
 pub fn run() {
     let (osc1_amp, osc1_freq, osc1_shape, osc2_amp, osc2_freq, osc2_shape) = prompt_for_params();
 
-    fn parse_shape(shape: &str) -> OscillatorShape {
+    pub fn parse_shape(shape: &str) -> OscillatorShape {
         match shape {
             "sin" => OscillatorShape::Sinewave,
             "squ" => OscillatorShape::Squarewave,

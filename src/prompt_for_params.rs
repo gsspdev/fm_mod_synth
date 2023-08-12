@@ -2,7 +2,7 @@ use crate::lib::read_param;
 use crate::lib::parse_arg;
 use std::clone::std;
 
-mod prompt_for_params;
+// pub mod prompt_for_params;
 
 pub fn prompt_for_params() -> () {
 
