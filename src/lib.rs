@@ -1,5 +1,8 @@
-use std::str::FromStr;
+// pub mod lib;
 
+mod prompt_for_params;
+
+use std::str::FromStr;
 use std::io::prelude::*;
 
 pub fn parse_arg<T: FromStr>(arg: &str, description: &str) -> T {
