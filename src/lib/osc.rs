@@ -1,4 +1,4 @@
-// use std::clone;
+use std::clone;
 
 #[derive(Clone)]
 pub enum ShapeMath {

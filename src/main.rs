@@ -7,7 +7,7 @@ use std::clone;
 
 // use crate::lib::Oscillator;
 use crate::osc::Oscillator;
-use crate::osc::OscillatorShape;
+use crate::osc::ShapeMath;
 use crate::lib::read_param;
 use crate::lib::parse_arg;
 
@@ -32,12 +32,12 @@ pub fn run() {
         )
     };
 
-    fn parse_shape(shape: &str) -> OscillatorShape {
+    fn parse_shape(shape: &str) -> ShapeMath {
         match shape {
-            "sin" => OscillatorShape::Sinewave,
-            "squ" => OscillatorShape::Squarewave,
-            "saw" => OscillatorShape::Sawwave,
-            "tri" => OscillatorShape::Trianglewave,
+            "sin" => ShapeMath::Sinewave,
+            "squ" => ShapeMath::Squarewave,
+            "saw" => ShapeMath::Sawwave,
+            "tri" => ShapeMath::Trianglewave,
             _ => {
                 eprintln!("Invalid shape: {}", shape);
                 std::process::exit(1);
