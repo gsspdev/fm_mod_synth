@@ -1,6 +1,5 @@
-use std::str::FromStr;
-
 use std::io::prelude::*;
+use std::str::FromStr;
 
 pub fn parse_arg<T: FromStr>(arg: &str, description: &str) -> T {
     arg.parse::<T>().unwrap_or_else(|_| {
