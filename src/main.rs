@@ -3,8 +3,10 @@
 // use 'use' in the main.rs file
 // 'mod' is for lib.rs and mod.rs files
 
-use utils::{parse_arg, read_param};
-use oscillator::{Oscillator, ShapeMath};
+use fm_mod_synth::utils::{parse_arg, read_param};
+use fm_mod_synth::oscillator::{Oscillator, ShapeMath};
+use cpal::traits::{HostTrait, DeviceTrait, StreamTrait};
+use std::time::{Duration, Instant};
 
 pub fn run() {
     let (
