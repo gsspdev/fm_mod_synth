@@ -1,15 +1,10 @@
-mod lib;
-mod osc;
+// mod utils;
+// mod oscillator;
+// use 'use' in the main.rs file
+// 'mod' is for lib.rs and mod.rs files
 
-use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
-use std::time::{Duration, Instant};
-use std::clone;
-
-// use crate::lib::Oscillator;
-use crate::osc::Oscillator;
-use crate::osc::ShapeMath;
-use crate::lib::read_param;
-use crate::lib::parse_arg;
+use utils::{parse_arg, read_param};
+use oscillator::{Oscillator, ShapeMath};
 
 pub fn run() {
     let (

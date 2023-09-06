@@ -1,5 +1,7 @@
-pub mod prompt_for_params.rs
-pub mod osc_module;
+pub mod utils;
+pub mod oscillator;
+// pub mod prompt_for_params;
+// pub mod osc_module;
 
 use std::io::prelude::*;
 use std::str::FromStr;

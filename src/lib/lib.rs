@@ -1,7 +1,6 @@
 // pub crate;
 
 mod prompt_for_params;
-mod osc_module;
 // mod osc;
 use std::str::FromStr;
 use std::io::prelude::*;
