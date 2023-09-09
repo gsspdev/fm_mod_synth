@@ -1,17 +1,77 @@
-mod lib;
-mod osc;
+// mod utils;
+// mod oscillator;
+// use 'use' in the main.rs file
+// 'mod' is for lib.rs and mod.rs files
 
-use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
+use fm_mod_synth::utils::{parse_arg, read_param};
+use fm_mod_synth::oscillator::{Oscillator, ShapeMath};
+use cpal::traits::{HostTrait, DeviceTrait, StreamTrait};
 use std::time::{Duration, Instant};
-use std::clone;
-
-// use crate::lib::Oscillator;
+// use std::clone;
 use crate::osc::Oscillator;
-use crate::osc::ShapeMath;
+use crate::osc::OscillatorShape;
 use crate::lib::read_param;
 use crate::lib::parse_arg;
 
+// use std::clone;
+
+// use crate::lib::Oscillator;
+// use crate::osc::Oscillator;
+// use crate::osc::OscillatorShape;
+// use crate::lib::read_param;
+// use crate::lib::parse_arg;
+// use crate::prompt_for_params::prompt_for_params;
+
+/// A simple oscillator.
 pub fn run() {
+    // Arguments are parsed
+   let (osc1_amp, osc1_freq, osc1_shape, osc2_amp, osc2_freq, osc2_shape) = if std::env::args().len() == 7 {
+    (
+        parse_arg::<f32>(&std::env::args().nth(1).unwrap(), "oscillator 1 amplitude"),
+        parse_arg::<f32>(&std::env::args().nth(2).unwrap(), "oscillator 1 frequency"),
+        parse_arg::<String>(&std::env::args().nth(3).unwrap(), "oscillator 1 shape"),
+        parse_arg::<f32>(&std::env::args().nth(4).unwrap(), "oscillator 2 amplitude"),
+        parse_arg::<f32>(&std::env::args().nth(5).unwrap(), "oscillator 2 frequency"),
+        parse_arg::<String>(&std::env::args().nth(6).unwrap(), "oscillator 2 shape"),
+    )
+} else {
+    let mut args = std::env::args().skip(1); // Skip the program name argument
+    (
+        if let Some(value) = args.next() {
+            parse_arg::<f32>(&value, "oscillator 1 amplitude")
+        } else {
+            read_param::<f32>("Enter amplitude for oscillator 1: ")
+        },
+        if let Some(value) = args.next() {
+            parse_arg::<f32>(&value, "oscillator 1 frequency")
+        } else {
+            read_param::<f32>("Enter frequency for oscillator 1: ")
+        },
+        if let Some(value) = args.next() {
+            parse_arg::<String>(&value, "oscillator 1 shape")
+        } else {
+            read_param::<String>("Enter shape for oscillator 1 (sin, squ, saw, tri): ")
+        },
+        if let Some(value) = args.next() {
+            parse_arg::<f32>(&value, "oscillator 2 amplitude")
+        } else {
+            read_param::<f32>("Enter amplitude for oscillator 2: ")
+        },
+        if let Some(value) = args.next() {
+            parse_arg::<f32>(&value, "oscillator 2 frequency")
+        } else {
+            read_param::<f32>("Enter frequency for oscillator 2: ")
+        },
+        if let Some(value) = args.next() {
+            parse_arg::<String>(&value, "oscillator 2 shape")
+        } else {
+            read_param::<String>("Enter shape for oscillator 2 (sin, squ, saw, tri): ")
+        },
+    )
+};
+
+    // Arguments are parsed
+    fn parse_shape(shape: &str) -> OscillatorShape {
     let (
         osc1_amp, 
         osc1_freq, 
@@ -41,6 +101,7 @@ pub fn run() {
     };
 
     fn parse_shape(shape: &str) -> ShapeMath {
+
         match shape {
             "sin" => ShapeMath::Sinewave,
             "squ" => ShapeMath::Squarewave,
@@ -111,6 +172,34 @@ pub fn run() {
         time += update_interval.as_secs_f32();
     }
 }
+
+// fn prompt_for_params() -> (f32, f32, String, f32, f32, String) {
+//     let (osc1_amp, 
+//         osc1_freq,
+//         osc1_shape, 
+//         osc2_amp, 
+//         osc2_freq,
+//         osc2_shape) = if std::env::args().len() == 7 {
+//         (
+//             parse_arg::<f32>(&std::env::args().nth(1).unwrap(), "oscillator 1 amplitude"),
+//             parse_arg::<f32>(&std::env::args().nth(2).unwrap(), "oscillator 1 frequency"),
+//             parse_arg::<String>(&std::env::args().nth(3).unwrap(), "oscillator 1 shape"), 
+//             parse_arg::<f32>(&std::env::args().nth(4).unwrap(), "oscillator 2 amplitude"),
+//             parse_arg::<f32>(&std::env::args().nth(5).unwrap(), "oscillator 2 frequency"),
+//             parse_arg::<String>(&std::env::args().nth(6).unwrap(), "oscillator 2 shape"),
+//         )
+//     } else {
+//         (
+//             read_param::<f32>("Enter amplitude for oscillator 1: "),
+//             read_param::<f32>("Enter frequency for oscillator 1: "),
+//             read_param::<String>("Enter shape for oscillator 1 (sin, squ, saw, tri): "),
+//             read_param::<f32>("Enter amplitude for oscillator 2: "),
+//             read_param::<f32>("Enter frequency for oscillator 2: "),
+//             read_param::<String>("Enter shape for oscillator 2 (sin, squ, saw, tri): "),
+//         )
+//     };
+//     (osc1_amp, osc1_freq, osc1_shape, osc2_amp, osc2_freq, osc2_shape)
+// }
 
 fn main() {
     run();
