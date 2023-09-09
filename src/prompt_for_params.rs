@@ -1,3 +1,9 @@
+
+// crate::lib::O
+// use lib::read_param;
+// use lib::parse_arg;
+// use std::clone::std;
+
 // pub mod prompt_for_params;
 pub use lib::{parse_arg, read_param};
 // pub use std::clone::std;
@@ -13,12 +19,15 @@ pub fn prompt_for_params() -> () {
             osc2_amp, 
             osc2_freq,
             osc2_shape) = if std::env::args().len() == 7 {
+            (
                 parse_arg::<f32>(&std::env::args().nth(1).unwrap(), "oscillator 1 amplitude"),
                 parse_arg::<f32>(&std::env::args().nth(2).unwrap(), "oscillator 1 frequency"),
                 parse_arg::<String>(&std::env::args().nth(3).unwrap(), "oscillator 1 shape"), 
                 parse_arg::<f32>(&std::env::args().nth(4).unwrap(), "oscillator 2 amplitude"),
                 parse_arg::<f32>(&std::env::args().nth(5).unwrap(), "oscillator 2 frequency"),
                 parse_arg::<String>(&std::env::args().nth(6).unwrap(), "oscillator 2 shape"),
+            )
+
         } else {
             println!("Not enough arguments, prompting for parameters");
             (

@@ -1,0 +1,14 @@
+/Users/gssp/development/rust_projects/fm_mod_synth/target/debug/deps/clang_sys-a76bad3e4bd24ab1.rmeta: /Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/lib.rs /Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/support.rs /Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/link.rs /Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/macros.rs /Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/common.rs /Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/dynamic.rs
+
+/Users/gssp/development/rust_projects/fm_mod_synth/target/debug/deps/libclang_sys-a76bad3e4bd24ab1.rlib: /Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/lib.rs /Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/support.rs /Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/link.rs /Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/macros.rs /Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/common.rs /Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/dynamic.rs
+
+/Users/gssp/development/rust_projects/fm_mod_synth/target/debug/deps/clang_sys-a76bad3e4bd24ab1.d: /Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/lib.rs /Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/support.rs /Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/link.rs /Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/macros.rs /Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/common.rs /Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/dynamic.rs
+
+/Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/lib.rs:
+/Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/support.rs:
+/Users/gssp/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.6.1/src/link.rs:
+/Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/macros.rs:
+/Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/common.rs:
+/Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out/dynamic.rs:
+
+# env-dep:OUT_DIR=/Users/gssp/development/rust_projects/fm_mod_synth/target/debug/build/clang-sys-fbdeff8c8149647b/out
