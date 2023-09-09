@@ -9,6 +9,11 @@
 # will likely look very different (and much more reasonable).
 # See Cargo.toml.orig for the original contents.
 
+[profile.dev.build-override]
+debug = true
+[profile.release.build-override]
+debug = true
+
 [package]
 edition = "2021"
 rust-version = "1.69.0"
@@ -17,6 +22,10 @@ version = "0.1.5"
 description = "A simple package for fm synthesis"
 readme = "README.md"
 license = "MIT"
+
+[dependencies]
+dioxus = "0.4.0"
+dioxus-web = "0.4.0"
 
 [dependencies.cpal]
 version = "0.13"
