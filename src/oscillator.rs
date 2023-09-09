@@ -63,14 +63,3 @@ impl Oscillator {
 self.shape.compute(self.freq + input_freq, time)
     }
 }
-
-// pub fn parse_arg<T: FromStr>(arg: &str, description: &str) -> T {
-//     arg.parse::<T>().unwrap_or_else(|_| {
-//         eprintln!("Invalid {}: {}", description, arg);
-//         std::process::exit(1);
-//     })
-// }
-
-// pub fn read_param<T: FromStr>(prompt: &str) -> T {
-//     print!("{}", prompt);
-//     std::io::stdout().flush().unwrap();
