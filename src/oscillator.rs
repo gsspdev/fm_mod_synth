@@ -1,7 +1,7 @@
 // use std::clone;
 
 #[derive(Clone)]
-pub enum OscillatorShape {
+pub enum ShapeMath {
     Sinewave,
     Squarewave,
     Sawwave,
@@ -12,23 +12,23 @@ pub enum OscillatorShape {
 pub struct Oscillator {
     amp: f32,
     freq: f32,
-    shape: OscillatorShape, 
+    shape: ShapeMath, 
     input: Option<Box<Oscillator>>,
 }
 
-impl OscillatorShape {
+impl ShapeMath {
     pub fn compute(&self, freq: f32, time: f32) -> f32 {
         match self {
-            OscillatorShape::Sinewave => (2.0 * std::f32::consts::PI * freq * time).sin(),
-            OscillatorShape::Squarewave => (2.0 * std::f32::consts::PI * freq * time).sin().signum(),
-            OscillatorShape::Sawwave => 2.0 * (freq * time - freq * time.floor()) - 1.0,
-            OscillatorShape::Trianglewave => (2.0 * (freq * time - 0.5)).abs() - 1.0,
+            ShapeMath::Sinewave => (2.0 * std::f32::consts::PI * freq * time).sin(),
+            ShapeMath::Squarewave => (2.0 * std::f32::consts::PI * freq * time).sin().signum(),
+            ShapeMath::Sawwave => 2.0 * (freq * time - freq * time.floor()) - 1.0,
+            ShapeMath::Trianglewave => (2.0 * (freq * time - 0.5)).abs() - 1.0,
         }
     }
 }
 
 impl Oscillator {
-    pub fn new(amp: f32, freq: f32, shape: OscillatorShape) -> Oscillator {
+    pub fn new(amp: f32, freq: f32, shape: ShapeMath) -> Oscillator {
         Oscillator {
             amp,
             freq,
@@ -37,7 +37,7 @@ impl Oscillator {
         }
     }
 
-    pub fn with_input(amp: f32, freq: f32, shape: OscillatorShape, input: Oscillator) -> Oscillator {
+    pub fn with_input(amp: f32, freq: f32, shape: ShapeMath, input: Oscillator) -> Oscillator {
         Oscillator {
             amp,
             freq,
