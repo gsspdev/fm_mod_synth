@@ -24,23 +24,17 @@ pub fn run() {
             parse_arg::<f32>(&std::env::args().nth(1).unwrap(), "oscillator 1 amplitude"),
             parse_arg::<f32>(&std::env::args().nth(2).unwrap(), "oscillator 1 frequency"),
             parse_arg::<String>(&std::env::args().nth(3).unwrap(), "oscillator 1 shape"), 
-            parse_arg::<f32>(&std::env::args().nth(4).unwrap(), "oscillator 2 amplitude"),
-            parse_arg::<f32>(&std::env::args().nth(5).unwrap(), "oscillator 2 frequency"),
-            parse_arg::<String>(&std::env::args().nth(6).unwrap(), "oscillator 2 shape"),
         )
         } else {
         (
             read_param::<f32>("Enter amplitude for oscillator 1: "),
             read_param::<f32>("Enter frequency for oscillator 1: "),
             read_param::<String>("Enter shape for oscillator 1 (sin, squ, saw, tri): "),
-            read_param::<f32>("Enter amplitude for oscillator 2: "),
-            read_param::<f32>("Enter frequency for oscillator 2: "),
-            read_param::<String>("Enter shape for oscillator 2 (sin, squ, saw, tri): "),
         )
-    };
+        };
+    }
 
     fn parse_shape(shape: &str) -> ShapeMath {
-
         match shape {
             "sin" => ShapeMath::Sinewave,
             "squ" => ShapeMath::Squarewave,
