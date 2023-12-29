@@ -1,6 +1,6 @@
-pub mod utils;
-pub mod prompt_for_params;
-pub mod oscillator;
+// pub mod utils;
+// pub mod prompt_for_params;
+// pub mod oscillator;
 
 use std::io::prelude::*;
 use std::str::FromStr;

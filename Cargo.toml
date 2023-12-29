@@ -24,6 +24,7 @@ readme = "README.md"
 license = "MIT"
 
 [dependencies]
+alsa = "0.8.1"
 dioxus = "0.4.0"
 dioxus-web = "0.4.0"
 
