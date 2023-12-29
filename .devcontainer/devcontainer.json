@@ -3,7 +3,7 @@
 {
 	"name": "Rust",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/rust:1-1-bullseye"
+	"image": "mcr.microsoft.com/devcontainers/rust:latest"
 
 	// Use 'mounts' to make the cargo cache persistent in a Docker Volume.
 	"mounts": [
@@ -30,7 +30,13 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "rustc --version",
+	"postCreateCommand":
+	"curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+	"sudo apt-get update",
+	"sudo apt install build-essential",
+	"sudo apt install pkg-config",
+	"sudo apt install alsa*",
+	"source $HOME/.cargo/env"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
