@@ -1,57 +1,12 @@
-mod lib;
 mod osc;
-
 use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
+use fm_mod_synth::{parse_arg, read_param};
+use osc::{Oscillator, ShapeMath};
 use std::time::{Duration, Instant};
-use std::clone;
-
-// use crate::lib::Oscillator;
-use crate::osc::Oscillator;
-use crate::osc::ShapeMath;
-use crate::lib::read_param;
-use crate::lib::parse_arg;
 
 pub fn run() {
-    let (
-        osc1_amp, 
-        osc1_freq, 
-        osc1_shape, 
-        osc2_amp, 
-        osc2_freq, 
-        osc2_shape) = 
-
-        if std::env::args().len() == 7 {
-        (
-            parse_arg::<f32>(&std::env::args().nth(1).unwrap(), "oscillator 1 amplitude"),
-            parse_arg::<f32>(&std::env::args().nth(2).unwrap(), "oscillator 1 frequency"),
-            parse_arg::<String>(&std::env::args().nth(3).unwrap(), "oscillator 1 shape"), 
-            parse_arg::<f32>(&std::env::args().nth(4).unwrap(), "oscillator 2 amplitude"),
-            parse_arg::<f32>(&std::env::args().nth(5).unwrap(), "oscillator 2 frequency"),
-            parse_arg::<String>(&std::env::args().nth(6).unwrap(), "oscillator 2 shape"),
-        )
-        } else {
-        (
-            read_param::<f32>("Enter amplitude for oscillator 1: "),
-            read_param::<f32>("Enter frequency for oscillator 1: "),
-            read_param::<String>("Enter shape for oscillator 1 (sin, squ, saw, tri): "),
-            read_param::<f32>("Enter amplitude for oscillator 2: "),
-            read_param::<f32>("Enter frequency for oscillator 2: "),
-            read_param::<String>("Enter shape for oscillator 2 (sin, squ, saw, tri): "),
-        )
-    };
-
-    fn parse_shape(shape: &str) -> ShapeMath {
-        match shape {
-            "sin" => ShapeMath::Sinewave,
-            "squ" => ShapeMath::Squarewave,
-            "saw" => ShapeMath::Sawwave,
-            "tri" => ShapeMath::Trianglewave,
-            _ => {
-                eprintln!("Invalid shape: {}", shape);
-                std::process::exit(1);
-            }
-        }
-    }
+    let (osc1_amp, osc1_freq, osc1_shape) = fetch_oscillator_params(1, "1").unwrap();
+    let (osc2_amp, osc2_freq, osc2_shape) = fetch_oscillator_params(4, "2").unwrap();
 
     let osc1_waveshape = parse_shape(&osc1_shape);
     let osc2_waveshape = parse_shape(&osc2_shape);
@@ -61,8 +16,6 @@ pub fn run() {
 
     let update_interval = Duration::from_millis(1);
     let mut time = 0.0;
-
-    // ... rest of the code is same
 
     let host = cpal::default_host();
     let device = host
@@ -109,6 +62,47 @@ pub fn run() {
         }
 
         time += update_interval.as_secs_f32();
+    }
+}
+
+fn fetch_oscillator_params(start_index: usize, osc: &str) -> Result<(f32, f32, String), String> {
+    if std::env::args().len() >= start_index + 3 {
+        Ok((
+            parse_arg::<f32>(
+                &std::env::args().nth(start_index).unwrap(),
+                &format!("oscillator {} amplitude", osc),
+            ),
+            parse_arg::<f32>(
+                &std::env::args().nth(start_index + 1).unwrap(),
+                &format!("oscillator {} frequency", osc),
+            ),
+            parse_arg::<String>(
+                &std::env::args().nth(start_index + 2).unwrap(),
+                &format!("oscillator {} shape", osc),
+            ),
+        ))
+    } else {
+        Ok((
+            read_param::<f32>(&format!("Enter amplitude for oscillator {}: ", osc)),
+            read_param::<f32>(&format!("Enter frequency for oscillator {}: ", osc)),
+            read_param::<String>(&format!(
+                "Enter shape for oscillator {} (sin, squ, saw, tri): ",
+                osc
+            )),
+        ))
+    }
+}
+
+fn parse_shape(shape: &str) -> ShapeMath {
+    match shape {
+        "sin" => ShapeMath::Sinewave,
+        "squ" => ShapeMath::Squarewave,
+        "saw" => ShapeMath::Sawwave,
+        "tri" => ShapeMath::Trianglewave,
+        _ => {
+            eprintln!("Invalid shape: {}", shape);
+            std::process::exit(1);
+        }
     }
 }
 
