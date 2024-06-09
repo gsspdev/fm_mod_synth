@@ -4,3 +4,5 @@ Project structure needs to be improved
 Tests need to be added
 Waveform selection uses floating points, does not indicate options on cl
 Enter does not stop audio
+
+plan: make into library crates
