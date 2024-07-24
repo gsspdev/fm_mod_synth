@@ -73,7 +73,7 @@ pub fn run() {
         .expect("Failed to get default output config")
         .config();
 
-    let osc2_clone = osc2.clone_osc();
+    let osc2_clone = osc2.clone();
     let sample_rate = config.sample_rate.0 as f32;
     let mut samples_played = 0f32;
 

@@ -1,6 +1,8 @@
 // use std::clone;
 
-#[derive(Clone)]
+use crate::osc::ShapeMath::{Sawwave, Sinewave, Squarewave, Trianglewave};
+
+#[derive(Debug, Clone, Copy)]
 pub enum ShapeMath {
     Sinewave,
     Squarewave,
@@ -8,7 +10,7 @@ pub enum ShapeMath {
     Trianglewave
 }
 
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct Oscillator {
     amp: f32,
     freq: f32,
@@ -19,16 +21,16 @@ pub struct Oscillator {
 impl ShapeMath {
     pub fn compute(&self, freq: f32, time: f32) -> f32 {
         match self {
-            ShapeMath::Sinewave => (2.0 * std::f32::consts::PI * freq * time).sin(),
-            ShapeMath::Squarewave => (2.0 * std::f32::consts::PI * freq * time).sin().signum(),
-            ShapeMath::Sawwave => 2.0 * (freq * time - freq * time.floor()) - 1.0,
-            ShapeMath::Trianglewave => (2.0 * (freq * time - 0.5)).abs() - 1.0,
+            Self::Sinewave => (2.0 * std::f32::consts::PI * freq * time).sin(),
+            Self::Squarewave => (2.0 * std::f32::consts::PI * freq * time).sin().signum(),
+            Self::Sawwave => 2.0 * (freq * time - freq * time.floor()) - 1.0,
+            Self::Trianglewave => (2.0 * (freq * time - 0.5)).abs() - 1.0,
         }
     }
 }
 
 impl Oscillator {
-    pub fn new(amp: f32, freq: f32, shape: ShapeMath) -> Oscillator {
+    pub fn new(amp: f32, freq: f32, shape: ShapeMath) -> Self {
         Oscillator {
             amp,
             freq,
@@ -37,7 +39,7 @@ impl Oscillator {
         }
     }
 
-    pub fn with_input(amp: f32, freq: f32, shape: ShapeMath, input: Oscillator) -> Oscillator {
+    pub fn with_input(amp: f32, freq: f32, shape: ShapeMath, input: Oscillator) -> Self {
         Oscillator {
             amp,
             freq,
@@ -46,14 +48,14 @@ impl Oscillator {
         }
     }
 
-    pub fn clone_osc(&self) -> Oscillator {
-        Oscillator {
-            amp: self.amp,
-            freq: self.freq,
-            shape: self.shape.clone(),
-            input: self.input.clone(),
-        }
-    }
+//    pub fn clone_osc(&self) -> Self {
+//        Oscillator {
+//            amp: self.amp,
+//            freq: self.freq,
+//            shape: self.shape.clone(),
+//            input: self.input.clone(),
+//        }
+//    }
 
     pub fn frequency_modulation(&self, time: f32) -> f32 {
         let input_freq = match &self.input {
