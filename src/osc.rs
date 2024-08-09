@@ -7,14 +7,14 @@ pub enum ShapeMath {
     Sinewave,
     Squarewave,
     Sawwave,
-    Trianglewave
+    Trianglewave,
 }
 
 #[derive(Debug, Clone)]
 pub struct Oscillator {
     amp: f32,
     freq: f32,
-    shape: ShapeMath, 
+    shape: ShapeMath,
     input: Option<Box<Oscillator>>,
 }
 
@@ -48,20 +48,20 @@ impl Oscillator {
         }
     }
 
-//    pub fn clone_osc(&self) -> Self {
-//        Oscillator {
-//            amp: self.amp,
-//            freq: self.freq,
-//            shape: self.shape.clone(),
-//            input: self.input.clone(),
-//        }
-//    }
+    //    pub fn clone_osc(&self) -> Self {
+    //        Oscillator {
+    //            amp: self.amp,
+    //            freq: self.freq,
+    //            shape: self.shape.clone(),
+    //            input: self.input.clone(),
+    //        }
+    //    }
 
     pub fn frequency_modulation(&self, time: f32) -> f32 {
         let input_freq = match &self.input {
             Some(input_oscillator) => input_oscillator.frequency_modulation(time) * self.amp,
             None => 0.0,
         };
-self.shape.compute(self.freq + input_freq, time)
+        self.shape.compute(self.freq + input_freq, time)
     }
 }
