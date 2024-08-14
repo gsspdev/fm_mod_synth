@@ -18,3 +18,4 @@ $ cargo run 0.5 440 squ 0.25 220 tri
 pushing for the green bubble
 OH BOY I LOVE THOSE GREEN BUBBLES FRUITLESS THOUGH THEY MAY BE
 another useless commit
+better commits will be made
