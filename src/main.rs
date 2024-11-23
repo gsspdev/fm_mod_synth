@@ -48,12 +48,10 @@ pub fn run() {
     let osc2_waveshape = parse_shape(&osc2_shape);
 
     let osc1 = Oscillator::new(osc1_amp, osc1_freq, osc1_waveshape);
-    let osc2 = Oscillator::with_input(osc2_amp, osc2_freq, osc2_waveshape, osc1);
+    let osc2 = Oscillator::new_with_input(osc2_amp, osc2_freq, osc2_waveshape, osc1);
 
     let update_interval = Duration::from_millis(1);
     let mut time = 0.0;
-
-    // ... rest of the code is same
 
     let host = cpal::default_host();
     let device = host
