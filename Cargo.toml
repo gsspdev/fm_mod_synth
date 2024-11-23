@@ -23,5 +23,8 @@ description = "A simple package for fm synthesis"
 readme = "README.md"
 license = "MIT"
 
+[dependencies]
+plotters = "0.3.7"
+
 [dependencies.cpal]
 version = "0.13"

@@ -2,16 +2,22 @@ mod lib;
 mod osc;
 
 use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
-use std::clone;
 use std::time::{Duration, Instant};
 
-// use crate::lib::Oscillator;
 use crate::lib::parse_arg;
 use crate::lib::read_param;
 use crate::osc::Oscillator;
 use crate::osc::ShapeMath;
+use crate::osc::Graph;
+use crate::osc::sinewave_gen;
+
+use plotters::prelude::*;
+
 
 pub fn run() {
+
+    sinewave_gen(2.0, 1.0);
+
     let (osc1_amp, osc1_freq, osc1_shape, osc2_amp, osc2_freq, osc2_shape) =
         if std::env::args().len() == 7 {
             (

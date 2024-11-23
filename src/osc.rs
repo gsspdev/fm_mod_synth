@@ -10,6 +10,27 @@ pub enum ShapeMath {
     Trianglewave,
 }
 
+pub struct Graph {
+    pub x: Vec<f32>,
+    pub y: Vec<f32>,
+}
+
+impl Graph {
+    pub fn new(x: Vec<f32>, y: Vec<f32>) -> Self {
+        Graph { x, y }
+    }
+}
+
+pub fn sinewave_gen(freq: f32, time: f32) -> Graph {
+    let mut x = Vec::new();
+    let mut y = Vec::new();
+    for i in 0..(time * 44100.0) as usize {
+        x.push(i as f32 / 44100.0);
+        y.push((2.0 * std::f32::consts::PI * freq * x[i]).sin());
+    }
+    Graph::new(x, y)
+}
+
 #[derive(Debug, Clone)]
 pub struct Oscillator {
     amp: f32,
